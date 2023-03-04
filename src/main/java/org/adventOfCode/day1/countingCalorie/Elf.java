@@ -1,4 +1,9 @@
 package org.adventOfCode.day1.countingCalorie;
 
-public record Elf(String name, int calorie) {
+import java.util.Arrays;
+
+public record Elf(String name, int... calories) {
+    public int sumOfCalories() {
+        return Arrays.stream(calories).sum();
+    }
 }
