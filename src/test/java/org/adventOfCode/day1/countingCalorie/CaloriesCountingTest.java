@@ -2,18 +2,17 @@ package org.adventOfCode.day1.countingCalorie;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CaloriesCountingTest
 {
     private Elf findElfCarryingTheMostCalorie(Elf ...elfs) {
-        if(elfs.length > 1) {
-            if (elfs[0].sumOfCalories() > elfs[1].sumOfCalories())
-                return elfs[0];
-            return elfs[1];
-        }
-        return elfs[0];
-
+        if(elfs.length == 0)
+            return elfs[0];
+        return Arrays.stream(elfs).sorted( (elf1, elf2) -> elf1.compareTo(elf2) )
+                    .findFirst().orElseThrow();
     }
     @Test
     void oneElfCarryingAnCalorie(){
@@ -55,6 +54,18 @@ public class CaloriesCountingTest
 
         assertEquals(1000,elfFound.sumOfCalories());
         assertEquals("elf1", elfFound.name());
+    }
+
+    @Test
+    void threeElfCarryingEachAListOfCalorie(){
+        Elf elf1 = new Elf("elf1", 200, 200);
+        Elf elf2 = new Elf("elf2", 100, 100);
+        Elf elf3 = new Elf("elf3", 500, 500);
+
+        Elf elfFound = findElfCarryingTheMostCalorie(elf1, elf2, elf3);
+
+        assertEquals(1000,elfFound.sumOfCalories());
+        assertEquals("elf3", elfFound.name());
     }
 
 

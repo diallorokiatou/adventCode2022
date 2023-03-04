@@ -6,4 +6,8 @@ public record Elf(String name, int... calories) {
     public int sumOfCalories() {
         return Arrays.stream(calories).sum();
     }
+
+    public int compareTo(Elf elf) {
+        return elf.sumOfCalories() - sumOfCalories();
+    }
 }
