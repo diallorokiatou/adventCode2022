@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CaloriesCountingTest
 {
     private Elf findElfCarryingTheMostCalorie(Elf ...elfs) {
-        if(elfs.length == 2) {
+        if(elfs.length > 1) {
             if (elfs[0].sumOfCalories() > elfs[1].sumOfCalories())
                 return elfs[0];
             return elfs[1];
