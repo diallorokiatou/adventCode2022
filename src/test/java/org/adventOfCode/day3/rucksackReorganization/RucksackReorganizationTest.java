@@ -3,18 +3,38 @@ package org.adventOfCode.day3.rucksackReorganization;
 import org.junit.jupiter.api.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RucksackReorganizationTest {
 
     @Test
-    void vJrwpWtwJgWrhcsFMMfFFhFp_should_return_p_with_16_priority(){
+    void no_item(){
+        String rucksack = "vJrwwWtwJgWrhcsFMMfFFhFp";
+
+        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+
+        assertThrows(RuntimeException.class,
+                ()-> rucksackReorganization.findItem(rucksack));
+    }
+
+    @Test
+    void lower_case_item(){
         String rucksack = "vJrwpWtwJgWrhcsFMMfFFhFp";
         RucksackReorganization rucksackReorganization = new RucksackReorganization();
 
-        Item item = rucksackReorganization.findPriority(rucksack);
+        char item = rucksackReorganization.findItem(rucksack);
 
-        assertEquals("p" , item.name());
-        assertEquals(16, item.getPriority());
+        assertEquals('p' , item);
+    }
+
+    @Test
+    void lower_case_item1(){
+        String rucksack = "CrZsJsPPZsGzwwsLwLmpwMDw";
+        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+
+        char item = rucksackReorganization.findItem(rucksack);
+
+        assertEquals('s' , item);
     }
 
 }
