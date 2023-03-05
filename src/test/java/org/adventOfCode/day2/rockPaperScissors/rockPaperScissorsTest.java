@@ -2,7 +2,11 @@ package org.adventOfCode.day2.rockPaperScissors;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class rockPaperScissorsTest {
 
@@ -44,6 +48,37 @@ class rockPaperScissorsTest {
     void player2_win1() {
         int computeScore = computeAndRoundScore(Shape.PAPER, Shape.SCISSORS);
         assertEquals(9, computeScore);
+    }
+
+    @Test
+    void player2_strategic_guide() {
+        List<Shape> player1Shapes = Arrays.asList(Shape.ROCK, Shape.PAPER, Shape.SCISSORS);
+        List<Shape> player2Shapes = Arrays.asList(Shape.PAPER, Shape.ROCK, Shape.SCISSORS);
+
+        int computeScore = computeStrategicGuideScore(player1Shapes, player2Shapes);
+
+        assertEquals(15, computeScore);
+    }
+
+    @Test
+    void player2_strategic_guide_should_throws_errors_when_list_size_are_different() {
+        List<Shape> player1Shapes = Arrays.asList(Shape.ROCK, Shape.PAPER);
+        List<Shape> player2Shapes = Arrays.asList(Shape.PAPER, Shape.ROCK, Shape.SCISSORS);
+
+        assertThrows(RuntimeException.class,
+                ()->{
+                    computeStrategicGuideScore(player1Shapes, player2Shapes);
+                });
+    }
+
+    private int computeStrategicGuideScore(List<Shape> player1Shapes, List<Shape> player2Shapes) {
+        if(player1Shapes.size() != player2Shapes.size())
+            throw  new RuntimeException("Lists must have same size");
+        int sum = 0;
+        for (int i = 0; i < player1Shapes.size(); i++) {
+            sum += computeAndRoundScore(player1Shapes.get(i), player2Shapes.get(i));
+        }
+        return sum;
     }
 
     private int computeAndRoundScore(Shape shape1, Shape shape2) {
