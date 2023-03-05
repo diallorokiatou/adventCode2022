@@ -50,7 +50,7 @@ class rockPaperScissorsTest {
             return 6 + shape2.getScore();
         if(shape1.getScore() > shape2.getScore())
             return LOSS + shape2.getScore();
-        return DRAW + shape1.getScore();
+        return DRAW + shape2.getScore();
     }
 
 }
