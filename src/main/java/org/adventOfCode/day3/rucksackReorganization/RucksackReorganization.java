@@ -15,6 +15,8 @@ public class RucksackReorganization {
     }
 
     public int findPriority(char item) {
-       return Character.getNumericValue(item) + 1 - 10;
+        if(Character.isUpperCase(item))
+            return Character.getNumericValue(item) + 1 + 16;
+        return Character.getNumericValue(item) + 1 - 10;
     }
 }
