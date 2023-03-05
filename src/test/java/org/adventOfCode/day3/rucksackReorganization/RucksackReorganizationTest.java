@@ -35,8 +35,10 @@ class RucksackReorganizationTest {
         RucksackReorganization rucksackReorganization = new RucksackReorganization();
 
         char item = rucksackReorganization.findItem(rucksack);
+        int priority = rucksackReorganization.findPriority(item);
 
         assertEquals('s' , item);
+        assertEquals(19, priority);
     }
 
     @Test

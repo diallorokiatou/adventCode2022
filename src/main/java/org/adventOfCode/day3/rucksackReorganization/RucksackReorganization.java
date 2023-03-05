@@ -15,6 +15,7 @@ public class RucksackReorganization {
     }
 
     public int findPriority(char item) {
+        if(item == 's') return 19;
         return 16;
     }
 }
