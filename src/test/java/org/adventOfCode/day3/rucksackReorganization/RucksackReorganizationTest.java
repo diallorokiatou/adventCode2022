@@ -23,8 +23,10 @@ class RucksackReorganizationTest {
         RucksackReorganization rucksackReorganization = new RucksackReorganization();
 
         char item = rucksackReorganization.findItem(rucksack);
+        int priority = rucksackReorganization.findPriority(item);
 
         assertEquals('p' , item);
+        assertEquals(16, priority);
     }
 
     @Test
