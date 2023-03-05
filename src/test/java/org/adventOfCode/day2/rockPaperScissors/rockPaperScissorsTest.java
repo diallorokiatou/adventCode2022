@@ -8,46 +8,47 @@ class rockPaperScissorsTest {
 
     public static final int DRAW = 3;
     public static final int LOSS = 0;
+    public static final int WIN = 6;
 
     @Test
     void players_play_same_shape(){
-        int computeScore = predictPlayer2Score(Shape.SCISSORS, Shape.SCISSORS);
+        int computeScore = computeAndRoundScore(Shape.SCISSORS, Shape.SCISSORS);
         assertEquals(6, computeScore);
     }
 
     @Test
     void players_play_same_shape2(){
-        int computeScore = predictPlayer2Score(Shape.ROCK, Shape.ROCK);
+        int computeScore = computeAndRoundScore(Shape.ROCK, Shape.ROCK);
         assertEquals(4, computeScore);
     }
 
     @Test
     void player2_lost(){
-        int computeScore = predictPlayer2Score(Shape.PAPER, Shape.ROCK);
+        int computeScore = computeAndRoundScore(Shape.PAPER, Shape.ROCK);
         assertEquals(1, computeScore);
     }
 
     @Test
     void player2_lost1(){
-        int computeScore = predictPlayer2Score(Shape.SCISSORS, Shape.PAPER);
+        int computeScore = computeAndRoundScore(Shape.SCISSORS, Shape.PAPER);
         assertEquals(2, computeScore);
     }
 
     @Test
     void player2_win(){
-        int computeScore = predictPlayer2Score(Shape.ROCK, Shape.PAPER);
+        int computeScore = computeAndRoundScore(Shape.ROCK, Shape.PAPER);
         assertEquals(8, computeScore);
     }
 
     @Test
-    void player2_win1(){
-        int computeScore = predictPlayer2Score(Shape.PAPER, Shape.SCISSORS);
+    void player2_win1() {
+        int computeScore = computeAndRoundScore(Shape.PAPER, Shape.SCISSORS);
         assertEquals(9, computeScore);
     }
 
-    private int predictPlayer2Score(Shape shape1, Shape shape2) {
+    private int computeAndRoundScore(Shape shape1, Shape shape2) {
         if(shape1.getScore() < shape2.getScore())
-            return 6 + shape2.getScore();
+            return WIN + shape2.getScore();
         if(shape1.getScore() > shape2.getScore())
             return LOSS + shape2.getScore();
         return DRAW + shape2.getScore();
