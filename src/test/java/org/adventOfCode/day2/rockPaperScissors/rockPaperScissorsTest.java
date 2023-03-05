@@ -33,7 +33,21 @@ class rockPaperScissorsTest {
         assertEquals(2, computeScore);
     }
 
+    @Test
+    void player2_win(){
+        int computeScore = predictPlayer2Score(Shape.ROCK, Shape.PAPER);
+        assertEquals(8, computeScore);
+    }
+
+    @Test
+    void player2_win1(){
+        int computeScore = predictPlayer2Score(Shape.PAPER, Shape.SCISSORS);
+        assertEquals(9, computeScore);
+    }
+
     private int predictPlayer2Score(Shape shape1, Shape shape2) {
+        if(shape1.getScore() < shape2.getScore())
+            return 6 + shape2.getScore();
         if(shape1.getScore() > shape2.getScore())
             return LOSS + shape2.getScore();
         return DRAW + shape1.getScore();
