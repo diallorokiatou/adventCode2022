@@ -37,4 +37,23 @@ class RucksackReorganizationTest {
         assertEquals('s' , item);
     }
 
+    @Test
+    void upper_case_item(){
+        String rucksack = "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL";
+        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+
+        char item = rucksackReorganization.findItem(rucksack);
+
+        assertEquals('L' , item);
+    }
+
+    @Test
+    void upper_case_item1(){
+        String rucksack = "PmmdzqPrVvPwwTWBwg";
+        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+
+        char item = rucksackReorganization.findItem(rucksack);
+
+        assertEquals('P' , item);
+    }
 }
