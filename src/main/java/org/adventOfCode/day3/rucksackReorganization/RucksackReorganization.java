@@ -1,6 +1,10 @@
 package org.adventOfCode.day3.rucksackReorganization;
 
 public class RucksackReorganization {
+
+    public static final int INCREMENTTOUPPERCASE = 17;
+    public static final int DECREMENTTOUPPER = 9;
+
     public char findItem(String rucksack) {
         String part1 = rucksack.substring(0, rucksack.length() / 2);
         String part2 =rucksack.substring(rucksack.length()/2 + 1);
@@ -16,7 +20,7 @@ public class RucksackReorganization {
 
     public int findPriority(char item) {
         if(Character.isUpperCase(item))
-            return Character.getNumericValue(item) + 17;
-        return Character.getNumericValue(item) - 9;
+            return Character.getNumericValue(item) + INCREMENTTOUPPERCASE;
+        return Character.getNumericValue(item) - DECREMENTTOUPPER;
     }
 }
