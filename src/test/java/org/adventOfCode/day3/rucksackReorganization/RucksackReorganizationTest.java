@@ -2,6 +2,9 @@ package org.adventOfCode.day3.rucksackReorganization;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static junit.framework.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -63,5 +66,36 @@ class RucksackReorganizationTest {
 
         assertEquals('P' , item);
         assertEquals(42, priority);
+    }
+
+    @Test
+    void sum_of_priority_of_list_of_one_rucksack(){
+        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+        List<String> rucksackList = List.of("vJrwpWtwJgWrhcsFMMfFFhFp");
+
+        int sumOfPriority = rucksackReorganization.sumOfPriority(rucksackList);
+
+        assertEquals(16, sumOfPriority);
+    }
+
+    @Test
+    void sum_of_priority_of_list_of_two_rucksack(){
+        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+        List<String> rucksackList = Arrays.asList("vJrwpWtwJgWrhcsFMMfFFhFp", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL");
+
+        int sumOfPriority = rucksackReorganization.sumOfPriority(rucksackList);
+
+        assertEquals(54, sumOfPriority);
+    }
+
+    @Test
+    void sum_of_priority_of_list_of_rucksack(){
+        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+        List<String> rucksackList = Arrays.asList("vJrwpWtwJgWrhcsFMMfFFhFp", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL", "PmmdzqPrVvPwwTWBwg",
+                "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn", "ttgJtRGJQctTZtZT", "CrZsJsPPZsGzwwsLwLmpwMDw");
+
+        int sumOfPriority = rucksackReorganization.sumOfPriority(rucksackList);
+
+        assertEquals(157, sumOfPriority);
     }
 }
