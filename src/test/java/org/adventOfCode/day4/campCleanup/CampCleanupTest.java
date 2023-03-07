@@ -16,6 +16,15 @@ class CampCleanupTest {
         assertFalse(isPairsContainsEachOther);
     }
 
+    @Test
+    void sections_d_ont_fully_contain_other1(){
+        Section section1 = new Section(2,3);
+        Section section2 = new Section(4,5);
+        CampCleanup campCleanup = new CampCleanup();
 
+        boolean isPairsContainsEachOther = campCleanup.isSectionsContainsEachOther(section1, section2);
+
+        assertFalse(isPairsContainsEachOther);
+    }
 
 }
