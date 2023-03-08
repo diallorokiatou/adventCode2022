@@ -20,4 +20,9 @@ public class Stacks {
     public void setTop(Create create) {
         this.create = create;
     }
+
+    void moveTop(Stacks stack2) {
+        stack2.setTop(getTop());
+        setTop(null);
+    }
 }

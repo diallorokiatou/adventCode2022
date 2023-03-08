@@ -10,15 +10,11 @@ class SupplyStacksTest {
         Stacks stack1 = new Stacks(1, new Create("Z"));
         Stacks stack2 = new Stacks(2);
 
-        moveTop(stack1, stack2);
+        stack1.moveTop(stack2);
 
         assertEquals(stack2.getTop().symbol(), "Z");
         assertEquals(stack1.getTop(), null);
     }
 
-    private void moveTop(Stacks stack1, Stacks stack2) {
-        stack2.setTop(stack1.getTop());
-        stack1.setTop(null);
-    }
 }
 
