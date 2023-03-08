@@ -17,12 +17,8 @@ public class Stacks {
         return this.create;
     }
 
-    public void setTop(Create create) {
-        this.create = create;
-    }
-
     void moveTop(Stacks stack2) {
-        stack2.setTop(getTop());
-        setTop(null);
+        stack2.create = create;
+        this.create = null;
     }
 }
