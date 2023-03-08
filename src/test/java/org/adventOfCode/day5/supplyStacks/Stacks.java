@@ -23,6 +23,11 @@ public class Stacks {
         return this.creates.get(getLastIndex());
     }
 
+    public String getTopSymbol() {
+        if(this.creates.isEmpty()) return null;
+        return this.creates.get(getLastIndex()).symbol();
+    }
+
     void moveTopTo(int numberOfCreate, Stacks stack2) {
         if(getSize() < numberOfCreate) throw new RuntimeException("can't move");
         for (int i = 0; i < numberOfCreate; i++) {
