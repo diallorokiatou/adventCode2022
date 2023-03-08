@@ -4,23 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Stacks {
-    private final int number;
     private List<Create> creates;
-    private Create create;
 
-    public Stacks(int number, Create create) {
-        this.number = number;
-        this.create = create;
+    public Stacks(Create create) {
         this.creates = new ArrayList<>(List.of(create));
     }
 
-    public Stacks(int number) {
-        this.number = number;
+    public Stacks() {
         this.creates = new ArrayList<>();
     }
 
-    public Stacks(int number, Create ...creates) {
-        this.number = number;
+    public Stacks(Create ...creates) {
         this.creates = new ArrayList<>(List.of(creates));
     }
 
