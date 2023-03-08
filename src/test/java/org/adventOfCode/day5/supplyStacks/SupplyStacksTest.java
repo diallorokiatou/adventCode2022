@@ -2,7 +2,7 @@ package org.adventOfCode.day5.supplyStacks;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SupplyStacksTest {
     @Test
@@ -10,10 +10,10 @@ class SupplyStacksTest {
         Stacks stack1 = new Stacks(new Create("Z"));
         Stacks stack2 = new Stacks();
 
-        stack1.moveTopTo(stack2);
+        stack1.moveTopTo(1, stack2);
 
         assertEquals(stack2.getTop().symbol(), "Z");
-        assertEquals(stack1.getTop(), null);
+        assertNull(stack1.getTop());
     }
 
     @Test
@@ -21,12 +21,29 @@ class SupplyStacksTest {
         Stacks stack1 = new Stacks(new Create("A"), new Create("Z"));
         Stacks stack2 = new Stacks();
 
-        stack1.moveTopTo(stack2);
+        stack1.moveTopTo(1, stack2);
 
         assertEquals(stack2.getTop().symbol(), "Z");
         assertEquals(stack1.getTop().symbol(), "A");
     }
 
+    @Test
+    void stack1_with_two_creates_and_stack2_is_empty_two_move(){
+        Stacks stack1 = new Stacks(new Create("A"), new Create("Z"));
+        Stacks stack2 = new Stacks();
 
+        stack1.moveTopTo(2, stack2);
+
+        assertEquals(stack2.getTop().symbol(), "A");
+        assertNull(stack1.getTop());
+    }
+
+    @Test
+    void stack1_with_two_creates_and_stack2_is_empty_three_move_should_throw_errors(){
+        Stacks stack1 = new Stacks(new Create("A"), new Create("Z"));
+        Stacks stack2 = new Stacks();
+
+        assertThrows(RuntimeException.class, () -> stack1.moveTopTo(3, stack2), "can't move");
+    }
 }
 
