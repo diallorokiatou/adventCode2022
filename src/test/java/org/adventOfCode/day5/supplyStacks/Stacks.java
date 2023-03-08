@@ -20,19 +20,24 @@ public class Stacks {
 
     public Create getTop() {
         if(this.creates.isEmpty()) return null;
-        return this.creates.get(this.creates.size() - 1);
+        return this.creates.get(getLastIndex());
     }
 
     void moveTopTo(int numberOfCreate, Stacks stack2) {
-        if(this.creates.size() < numberOfCreate) throw new RuntimeException("can't move");
+        if(getSize() < numberOfCreate) throw new RuntimeException("can't move");
         for (int i = 0; i < numberOfCreate; i++) {
-            stack2.creates.add(this.creates.get(this.creates.size() - 1));
-            this.creates.remove(this.creates.size() - 1);
+            stack2.creates.add(this.creates.get(getLastIndex()));
+            this.creates.remove(getLastIndex());
         }
 
+    }
+
+    private int getLastIndex() {
+        return getSize() - 1;
     }
 
     public int getSize() {
         return this.creates.size();
     }
+
 }
