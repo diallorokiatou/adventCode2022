@@ -79,5 +79,18 @@ class SupplyStacksTest {
         assertEquals("CMZ", message);
     }
 
+    @Test
+    void move_number_above_create_size_should_throw_errors(){
+        Stacks stack1 = new Stacks(new Create("Z"), new Create("N"));
+        Stacks stack2 = new Stacks(new Create("M"), new Create("C"), new Create("D"));
+        Stacks stack3 = new Stacks(new Create("P"));
+        List<Stacks> stacks = Arrays.asList(stack1, stack2, stack3);
+        Move move1 = new Move(5, 2, 1);
+
+        SupplyStacks supplyStack = new SupplyStacks();
+
+        assertThrows(RuntimeException.class, () -> supplyStack.range(stacks, move1), "can't move");
+    }
+
 }
 
