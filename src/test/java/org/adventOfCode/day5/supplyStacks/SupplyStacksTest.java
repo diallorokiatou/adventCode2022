@@ -10,7 +10,7 @@ class SupplyStacksTest {
         Stacks stack1 = new Stacks(new Create("Z"));
         Stacks stack2 = new Stacks();
 
-        stack1.moveTop(stack2);
+        stack1.moveTopTo(stack2);
 
         assertEquals(stack2.getTop().symbol(), "Z");
         assertEquals(stack1.getTop(), null);
@@ -21,7 +21,7 @@ class SupplyStacksTest {
         Stacks stack1 = new Stacks(new Create("A"), new Create("Z"));
         Stacks stack2 = new Stacks();
 
-        stack1.moveTop(stack2);
+        stack1.moveTopTo(stack2);
 
         assertEquals(stack2.getTop().symbol(), "Z");
         assertEquals(stack1.getTop().symbol(), "A");

@@ -23,7 +23,7 @@ public class Stacks {
         return this.creates.get(this.creates.size() - 1);
     }
 
-    void moveTop(Stacks stack2) {
+    void moveTopTo(Stacks stack2) {
         stack2.creates.add(this.creates.get(this.creates.size() - 1));
         this.creates.remove(this.creates.size() - 1);
     }
