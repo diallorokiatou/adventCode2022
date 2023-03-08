@@ -32,4 +32,7 @@ public class Stacks {
 
     }
 
+    public int getSize() {
+        return this.creates.size();
+    }
 }
