@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CampCleanup {
 
-    private List<Pairs> pairs;
+    private final List<Pairs> pairs;
 
     public CampCleanup(Pairs ...pairs) {
         this.pairs = List.of(pairs);
