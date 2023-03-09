@@ -5,9 +5,9 @@ public enum Shape {
     PAPER(2),
     SCISSORS(3);
 
-    final int WINBONUS = 6;
-    final int LOSSBONUS = 0;
-     final int DRAWBONUS = 3;
+    private final int WINBONUS = 6;
+    private final int LOSSBONUS = 0;
+     private final int DRAWBONUS = 3;
     private final int score;
 
     Shape(int score) {
