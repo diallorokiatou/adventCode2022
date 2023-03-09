@@ -10,8 +10,6 @@ public class CaloriesCounting {
     }
 
     public Elf findElfCarryingTheMostCalorie() {
-        if(this.elfs.size() == 1)
-            return this.elfs.get(0);
-        return this.elfs.stream().min(Elf::compareTo).orElseThrow();
+        return this.elfs.size() == 1 ? this.elfs.get(0) : this.elfs.stream().min(Elf::compareTo).orElseThrow();
     }
 }
