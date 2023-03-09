@@ -28,7 +28,6 @@ public class Stacks {
             stack2.creates.add(this.creates.get(getLastIndex()));
             this.creates.remove(getLastIndex());
         }
-
     }
 
     private int getLastIndex() {
