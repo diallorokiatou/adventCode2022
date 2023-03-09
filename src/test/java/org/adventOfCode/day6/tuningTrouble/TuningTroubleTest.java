@@ -2,6 +2,8 @@ package org.adventOfCode.day6.tuningTrouble;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TuningTroubleTest {
@@ -36,15 +38,26 @@ class TuningTroubleTest {
     void first_stack_of_packet(){
         String signalBuffer = "mjqjpqmgbljsphdztnvjfqwrcgsmlb";
 
-        int startOfPacket = startofparcket(signalBuffer);
+        int startOfPacket = startOfparcket(signalBuffer);
 
         assertEquals(7, startOfPacket);
     }
 
-    private int startofparcket(String signalBuffer) {
-        return 7;
+    @Test
+    void first_stack_of_packet1(){
+        String signalBuffer = "nppdvjthqldpwncqszvftbrmjlhg";
+
+        int startOfPacket = startOfparcket(signalBuffer);
+
+        assertEquals(6, startOfPacket);
     }
 
+    private int startOfparcket(String signalBuffer) {
+        return IntStream.range(0, signalBuffer.length() - 4).filter(index -> {
+            String substring = signalBuffer.substring(index, index + 4);
+            return isMarker(substring);
+        }).map(index -> index + 4).findFirst().orElse(0);
+    }
 
     private boolean isMarker(String signalBuffer) {
         return signalBuffer.length() >= 4 && signalBuffer.chars().distinct().count() == signalBuffer.length();
