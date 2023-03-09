@@ -11,9 +11,9 @@ class TuningTroubleTest {
     void signal_buffer_under_4_char(){
         String signalBuffer = "mjq";
 
-        boolean isstartOfPacket = isMarker(signalBuffer);
+        boolean isStartOfPacket = isMarker(signalBuffer);
 
-        assertFalse(isstartOfPacket);
+        assertFalse(isStartOfPacket);
     }
 
     @Test
