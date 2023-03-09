@@ -52,6 +52,15 @@ class TuningTroubleTest {
         assertEquals(6, startOfPacket);
     }
 
+    @Test
+    void first_stack_of_packet2(){
+        String signalBuffer = "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw";
+
+        int startOfPacket = startOfparcket(signalBuffer);
+
+        assertEquals(11, startOfPacket);
+    }
+
     private int startOfparcket(String signalBuffer) {
         return IntStream.range(0, signalBuffer.length() - 4).filter(index -> {
             String substring = signalBuffer.substring(index, index + 4);
