@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class CampCleanup {
 
     public boolean isSectionsContainsEachOther(Section section1, Section section2) {
-        return section1.isContains(section2) && section2.isContains(section1);
+        return section1.contains(section2) && section2.contains(section1);
     }
 
     public int sumOfPairsFullyContainsEachOther(Pairs ...pairs) {

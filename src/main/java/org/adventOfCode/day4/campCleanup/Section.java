@@ -7,7 +7,7 @@ public record Section(int leftBound, int rightBound) {
         return new Section(Integer.parseInt(bounds[0]), Integer.parseInt(bounds[1]));
     }
 
-    boolean isContains(Section section) {
+    boolean contains(Section section) {
         return this.leftBound() >= section.leftBound() || this.rightBound() >= section.rightBound();
     }
 }

@@ -9,6 +9,6 @@ public record Pairs(Section section1, Section section2) {
     }
 
     public boolean isSectionsContainsEachOther() {
-        return section1.isContains(section2) && section2.isContains(section1);
+        return section1.contains(section2) && section2.contains(section1);
     }
 }
