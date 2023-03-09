@@ -17,8 +17,6 @@ public record Rucksack(String items) {
     }
 
     public int findPriority(char item) {
-        if(Character.isUpperCase(item))
-            return Character.getNumericValue(item) + INCREMENTTOUPPERCASE;
-        return Character.getNumericValue(item) - DECREMENTTOUPPER;
+        return Character.isUpperCase(item) ? Character.getNumericValue(item) + INCREMENTTOUPPERCASE : Character.getNumericValue(item) - DECREMENTTOUPPER;
     }
 }

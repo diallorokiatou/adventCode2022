@@ -2,9 +2,6 @@ package org.adventOfCode.day3.rucksackReorganization;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static junit.framework.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -64,36 +61,36 @@ class RucksackReorganizationTest {
 
     @Test
     void sum_of_priority_of_list_of_one_rucksack(){
-        RucksackReorganization rucksackReorganization = new RucksackReorganization();
-        List<Rucksack> rucksackList = List.of(new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp"));
+        Rucksack rucksack = new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp");
+        RucksackReorganization rucksackReorganization = new RucksackReorganization(rucksack);
 
-        int sumOfPriority = rucksackReorganization.sumOfPriority(rucksackList);
+        int sumOfPriority = rucksackReorganization.sumOfPriority();
 
         assertEquals(16, sumOfPriority);
     }
 
     @Test
     void sum_of_priority_of_list_of_two_rucksack(){
-        RucksackReorganization rucksackReorganization = new RucksackReorganization();
-        List<Rucksack> rucksackList = Arrays.asList(new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp"),
-                                                    new Rucksack("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL"));
+        Rucksack rucksack1 = new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp");
+        Rucksack rucksack2 = new Rucksack("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL");
+        RucksackReorganization rucksackReorganization = new RucksackReorganization(rucksack1, rucksack2);
 
-        int sumOfPriority = rucksackReorganization.sumOfPriority(rucksackList);
+        int sumOfPriority = rucksackReorganization.sumOfPriority();
 
         assertEquals(54, sumOfPriority);
     }
 
     @Test
     void sum_of_priority_of_list_of_rucksack(){
-        RucksackReorganization rucksackReorganization = new RucksackReorganization();
-        List<Rucksack> rucksackList = Arrays.asList(new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp"),
-                                                    new Rucksack("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL"),
-                                                    new Rucksack("PmmdzqPrVvPwwTWBwg"),
-                                                    new Rucksack("wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn"),
-                                                    new Rucksack("ttgJtRGJQctTZtZT"),
-                                                    new Rucksack("CrZsJsPPZsGzwwsLwLmpwMDw"));
+        Rucksack rucksack1 = new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp");
+        Rucksack rucksack2 = new Rucksack("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL");
+        Rucksack rucksack3 = new Rucksack("PmmdzqPrVvPwwTWBwg");
+        Rucksack rucksack4 = new Rucksack("wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn");
+        Rucksack rucksack5 = new Rucksack("ttgJtRGJQctTZtZT");
+        Rucksack rucksack6 = new Rucksack("CrZsJsPPZsGzwwsLwLmpwMDw");
+        RucksackReorganization rucksackReorganization = new RucksackReorganization(rucksack1, rucksack2, rucksack3, rucksack4, rucksack5, rucksack6);
 
-        int sumOfPriority = rucksackReorganization.sumOfPriority(rucksackList);
+        int sumOfPriority = rucksackReorganization.sumOfPriority();
 
         assertEquals(157, sumOfPriority);
     }

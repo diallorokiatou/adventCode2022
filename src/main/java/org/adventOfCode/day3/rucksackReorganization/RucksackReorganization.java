@@ -4,9 +4,15 @@ import java.util.List;
 
 public class RucksackReorganization {
 
-    public int sumOfPriority(List<Rucksack> rucksackList) {
+    private final List<Rucksack> rucksacks;
+
+    RucksackReorganization(Rucksack ...rucksacks){
+        this.rucksacks = List.of(rucksacks);
+    }
+
+    public int sumOfPriority() {
         int sum = 0;
-        for (Rucksack rucksack: rucksackList) {
+        for (Rucksack rucksack : this.rucksacks) {
             char item = rucksack.findItem();
             sum += rucksack.findPriority(item);
         }
