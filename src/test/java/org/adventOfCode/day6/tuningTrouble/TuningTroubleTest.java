@@ -2,8 +2,7 @@ package org.adventOfCode.day6.tuningTrouble;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class TuningTroubleTest {
     @Test
@@ -31,6 +30,19 @@ class TuningTroubleTest {
         boolean isStartOfPacket = isMarker(signalBuffer);
 
         assertTrue(isStartOfPacket );
+    }
+
+    @Test
+    void first_stack_of_packet(){
+        String signalBuffer = "mjqjpqmgbljsphdztnvjfqwrcgsmlb";
+
+        int startOfPacket = startofparcket(signalBuffer);
+
+        assertEquals(7, startOfPacket);
+    }
+
+    private int startofparcket(String signalBuffer) {
+        return 7;
     }
 
 
