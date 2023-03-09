@@ -2,41 +2,41 @@ package org.adventOfCode.day6.tuningTrouble;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TuningTroubleTest {
     @Test
     void signal_buffer_under_4_char(){
         String signalBuffer = "mjq";
 
-        boolean isStartOfPacket = new TuningTrouble(signalBuffer).isMarker(signalBuffer);
+        int isStartOfPacket = new TuningTrouble(signalBuffer).startOfPacket();
 
-        assertFalse(isStartOfPacket);
+        assertEquals(0, isStartOfPacket);
     }
 
     @Test
-    void is_not_a_marker(){
+    void do_not_contain_packet(){
         String signalBuffer = "mjqj";
 
-        boolean isStartOfPacket = new TuningTrouble(signalBuffer).isMarker(signalBuffer);
+        int isStartOfPacket = new TuningTrouble(signalBuffer).startOfPacket();
 
-        assertFalse(isStartOfPacket);
+        assertEquals(0, isStartOfPacket);
     }
 
     @Test
-    void is_a_marker(){
+    void contains_packet(){
         String signalBuffer = "mjqa";
 
-        boolean isStartOfPacket = new TuningTrouble(signalBuffer).isMarker(signalBuffer);
+        int isStartOfPacket = new TuningTrouble(signalBuffer).startOfPacket();
 
-        assertTrue(isStartOfPacket );
+        assertEquals(4, isStartOfPacket);
     }
 
     @Test
     void first_stack_of_packet(){
         String signalBuffer = "mjqjpqmgbljsphdztnvjfqwrcgsmlb";
 
-        int startOfPacket = new TuningTrouble(signalBuffer).startOfParcket();
+        int startOfPacket = new TuningTrouble(signalBuffer).startOfPacket();
 
         assertEquals(7, startOfPacket);
     }
@@ -45,7 +45,7 @@ class TuningTroubleTest {
     void first_stack_of_packet1(){
         String signalBuffer = "nppdvjthqldpwncqszvftbrmjlhg";
 
-        int startOfPacket = new TuningTrouble(signalBuffer).startOfParcket();
+        int startOfPacket = new TuningTrouble(signalBuffer).startOfPacket();
 
         assertEquals(6, startOfPacket);
     }
@@ -54,7 +54,7 @@ class TuningTroubleTest {
     void first_stack_of_packet2(){
         String signalBuffer = "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw";
 
-        int startOfPacket = new TuningTrouble(signalBuffer).startOfParcket();
+        int startOfPacket = new TuningTrouble(signalBuffer).startOfPacket();
 
         assertEquals(11, startOfPacket);
     }
