@@ -9,7 +9,7 @@ public record Rucksack(String items) {
         String part1 = getFistCompartment();
         String part2 = getSecondCompartment();
 
-        return Stream.of(part1.split("")).filter(item -> part2.indexOf(""+item) > -1).map(string -> string.charAt(0)).findFirst()
+        return Stream.of(part1.split("")).filter(part2::contains).map(string -> string.charAt(0)).findFirst()
                 .orElseThrow(() -> new RuntimeException("no Item found"));
 
     }
