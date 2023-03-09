@@ -13,7 +13,7 @@ public record TuningTrouble(String signalBuffer) {
         }
         return IntStream.range(ZEROPACKETLENGTH, this.signalBuffer.length() - MINPACKETLENGHT).filter(index -> {
             String substring = this.signalBuffer.substring(index, index + MINPACKETLENGHT);
-            return substring.chars().distinct().count() == substring.length();
+            return substring.chars().distinct().count() == MINPACKETLENGHT;
         }).map(index -> index + MINPACKETLENGHT).findFirst().orElse(ZEROPACKETLENGTH);
     }
 }
