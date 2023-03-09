@@ -24,15 +24,8 @@ class NoSpaceLeftOnDeviceTest {
     }
 
     private String convertToDirectory(String command) {
-        if(command == "$ cd a"){
-            String directory = command.split("cd")[1];
-            return directory.trim() + " (dir)";
-        }
-        if(command == "$ cd /") {
-            String directory = command.split("cd")[1];
-            return directory.trim() + " (dir)";
-        }
-        return null;
+        String directory = command.split("cd")[1];
+        return directory.trim() + " (dir)";
     }
 
 }
