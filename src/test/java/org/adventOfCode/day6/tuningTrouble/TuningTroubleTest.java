@@ -38,7 +38,7 @@ class TuningTroubleTest {
     void first_stack_of_packet(){
         String signalBuffer = "mjqjpqmgbljsphdztnvjfqwrcgsmlb";
 
-        int startOfPacket = startOfparcket(signalBuffer);
+        int startOfPacket = startOfParcket(signalBuffer);
 
         assertEquals(7, startOfPacket);
     }
@@ -47,7 +47,7 @@ class TuningTroubleTest {
     void first_stack_of_packet1(){
         String signalBuffer = "nppdvjthqldpwncqszvftbrmjlhg";
 
-        int startOfPacket = startOfparcket(signalBuffer);
+        int startOfPacket = startOfParcket(signalBuffer);
 
         assertEquals(6, startOfPacket);
     }
@@ -56,12 +56,12 @@ class TuningTroubleTest {
     void first_stack_of_packet2(){
         String signalBuffer = "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw";
 
-        int startOfPacket = startOfparcket(signalBuffer);
+        int startOfPacket = startOfParcket(signalBuffer);
 
         assertEquals(11, startOfPacket);
     }
 
-    private int startOfparcket(String signalBuffer) {
+    private int startOfParcket(String signalBuffer) {
         return IntStream.range(0, signalBuffer.length() - 4).filter(index -> {
             String substring = signalBuffer.substring(index, index + 4);
             return isMarker(substring);
