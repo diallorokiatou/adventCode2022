@@ -6,10 +6,6 @@ import java.util.List;
 public class Stacks {
     private List<Create> creates;
 
-    public Stacks(Create create) {
-        this.creates = new ArrayList<>(List.of(create));
-    }
-
     public Stacks() {
         this.creates = new ArrayList<>();
     }
@@ -19,17 +15,15 @@ public class Stacks {
     }
 
     public Create getTop() {
-        if(this.creates.isEmpty()) return null;
-        return this.creates.get(getLastIndex());
+        return this.creates.isEmpty() ? null : this.creates.get(getLastIndex());
     }
 
     public String getTopSymbol() {
-        if(this.creates.isEmpty()) return null;
-        return this.creates.get(getLastIndex()).symbol();
+        return this.creates.isEmpty() ? null : this.creates.get(getLastIndex()).symbol();
     }
 
     void moveTopTo(int numberOfCreate, Stacks stack2) {
-        if(getSize() < numberOfCreate) throw new RuntimeException("can't move");
+        if(this.getSize() < numberOfCreate) throw new RuntimeException("can't move");
         for (int i = 0; i < numberOfCreate; i++) {
             stack2.creates.add(this.creates.get(getLastIndex()));
             this.creates.remove(getLastIndex());
@@ -38,7 +32,7 @@ public class Stacks {
     }
 
     private int getLastIndex() {
-        return getSize() - 1;
+        return this.getSize() - 1;
     }
 
     public int getSize() {

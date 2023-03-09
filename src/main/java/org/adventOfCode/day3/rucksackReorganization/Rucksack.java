@@ -8,7 +8,6 @@ public record Rucksack(String items) {
     public char findItem() {
         String part1 = getFistCompartment();
         String part2 = getSecondCompartment();
-
         return Stream.of(part1.split("")).filter(part2::contains).map(string -> string.charAt(0)).findFirst()
                 .orElseThrow(() -> new RuntimeException("no Item found"));
 
