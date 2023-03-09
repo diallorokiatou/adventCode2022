@@ -1,15 +1,17 @@
 package org.adventOfCode.day4.campCleanup;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class CampCleanup {
 
-    public boolean isSectionsContainsEachOther(Section section1, Section section2) {
-        return section1.contains(section2) && section2.contains(section1);
+    private List<Pairs> pairs;
+
+    public CampCleanup(Pairs ...pairs) {
+        this.pairs = List.of(pairs);
     }
 
-    public int sumOfPairsFullyContainsEachOther(Pairs ...pairs) {
-        return (int) Arrays.stream(pairs).filter(Pairs::isSectionsContainsEachOther).count();
+    public int countOfPairsFullyContainsEachOther() {
+        return (int) this.pairs.stream().filter(Pairs::isSectionsContainsEachOther).count();
     }
 
 }

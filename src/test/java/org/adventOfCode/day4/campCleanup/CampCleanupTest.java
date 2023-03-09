@@ -47,6 +47,15 @@ class CampCleanupTest {
     }
 
     @Test
+    void pairs_fully_contain_each_other(){
+        Pairs pairs5 = Pairs.createPairs("6-6", "4-6");
+
+        boolean contains = pairs5.isSectionsContainsEachOther();
+
+        assertTrue(contains);
+    }
+
+    @Test
     void sum_of_pairs_contains_each_other(){
         Pairs pairs1 = Pairs.createPairs("2-4", "6-8");
         Pairs pairs2 = Pairs.createPairs("2-3", "4-5");
@@ -54,9 +63,9 @@ class CampCleanupTest {
         Pairs pairs4 = Pairs.createPairs("2-8", "3-7");
         Pairs pairs5 = Pairs.createPairs("6-6", "4-6");
         Pairs pairs6 = Pairs.createPairs("2-6", "4-8");
-        CampCleanup campCleanup = new CampCleanup();
+        CampCleanup campCleanup = new CampCleanup(pairs1, pairs2, pairs3, pairs4, pairs5, pairs6);
 
-        int sumOfPairsFullyContainsEachOther = campCleanup.sumOfPairsFullyContainsEachOther(pairs1, pairs2, pairs3, pairs4, pairs5, pairs6);
+        int sumOfPairsFullyContainsEachOther = campCleanup.countOfPairsFullyContainsEachOther();
 
         assertEquals(2, sumOfPairsFullyContainsEachOther);
     }
