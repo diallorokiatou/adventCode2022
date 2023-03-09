@@ -11,9 +11,10 @@ public record TuningTrouble(String signalBuffer) {
         if(this.signalBuffer.length() <= MINPACKETLENGHT) {
             return this.signalBuffer.chars().distinct().count() == MINPACKETLENGHT ? MINPACKETLENGHT : ZEROPACKETLENGTH;
         }
-        return IntStream.range(ZEROPACKETLENGTH, this.signalBuffer.length() - MINPACKETLENGHT).filter(index -> {
-            String substring = this.signalBuffer.substring(index, index + MINPACKETLENGHT);
-            return substring.chars().distinct().count() == MINPACKETLENGHT;
-        }).map(index -> index + MINPACKETLENGHT).findFirst().orElse(ZEROPACKETLENGTH);
+        return  IntStream.range(ZEROPACKETLENGTH, this.signalBuffer.length() - MINPACKETLENGHT)
+                .filter(index -> {
+                        String packet = this.signalBuffer.substring(index, index + MINPACKETLENGHT);
+                        return packet.chars().distinct().count() == MINPACKETLENGHT;
+                }).map(index -> index + MINPACKETLENGHT).findFirst().orElse(ZEROPACKETLENGTH);
     }
 }
