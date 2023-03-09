@@ -5,13 +5,18 @@ public enum Shape {
     PAPER(2),
     SCISSORS(3);
 
-    private final int value;
+    private final int WINBONUS = 6;
+    private final int LOSSBONUS = 0;
+    private final int DRAWBONUS = 3;
+    private final int score;
 
-    Shape(int value) {
-        this.value = value;
+    Shape(int score) {
+        this.score = score;
     }
 
-    public int getScore() {
-        return value;
+    public int computeScore(Shape shape2) {
+        if (score < shape2.score) return WINBONUS + shape2.score;
+        if (score > shape2.score) return LOSSBONUS + shape2.score;
+        return DRAWBONUS + shape2.score;
     }
 }

@@ -11,78 +11,78 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class rockPaperScissorsTest {
     @Test
     void players_play_same_shape(){
-        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame();
-
-        int computeScore = rockPaperScissorsGame.computeAndRoundScore(Shape.SCISSORS, Shape.SCISSORS);
+        Shape playersShape = Shape.SCISSORS;
+        int computeScore = playersShape.computeScore(playersShape);
 
         assertEquals(6, computeScore);
     }
 
     @Test
     void players_play_same_shape2(){
-        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame();
-
-        int computeScore = rockPaperScissorsGame.computeAndRoundScore(Shape.ROCK, Shape.ROCK);
+        Shape playersShape = Shape.ROCK;
+        int computeScore = playersShape.computeScore(playersShape);
 
         assertEquals(4, computeScore);
     }
 
     @Test
     void player2_lost(){
-        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame();
+        Shape player1Shape = Shape.PAPER;
+        Shape player2Shape = Shape.ROCK;
 
-        int computeScore = rockPaperScissorsGame.computeAndRoundScore(Shape.PAPER, Shape.ROCK);
+        int computeScore = player1Shape.computeScore(player2Shape);
 
         assertEquals(1, computeScore);
     }
 
     @Test
     void player2_lost1(){
-        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame();
+        Shape player1Shape = Shape.SCISSORS;
+        Shape player2Shape = Shape.PAPER;
 
-        int computeScore = rockPaperScissorsGame.computeAndRoundScore(Shape.SCISSORS, Shape.PAPER);
+        int computeScore = player1Shape.computeScore(player2Shape);
 
         assertEquals(2, computeScore);
     }
 
     @Test
     void player2_win(){
-        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame();
+        Shape player1Shape = Shape.ROCK;
+        Shape player2Shape = Shape.PAPER;
 
-        int computeScore = rockPaperScissorsGame.computeAndRoundScore(Shape.ROCK, Shape.PAPER);
+        int computeScore = player1Shape.computeScore(player2Shape);
 
         assertEquals(8, computeScore);
     }
 
     @Test
     void player2_win1() {
-        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame();
+        Shape player1Shape = Shape.PAPER;
+        Shape player2Shape = Shape.SCISSORS;
 
-        int computeScore = rockPaperScissorsGame.computeAndRoundScore(Shape.PAPER, Shape.SCISSORS);
+        int computeScore = player1Shape.computeScore(player2Shape);
 
         assertEquals(9, computeScore);
     }
 
     @Test
     void player2_strategic_guide() {
-        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame();
-
         List<Shape> player1Shapes = Arrays.asList(Shape.ROCK, Shape.PAPER, Shape.SCISSORS);
         List<Shape> player2Shapes = Arrays.asList(Shape.PAPER, Shape.ROCK, Shape.SCISSORS);
+        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame(player1Shapes, player2Shapes);
 
-        int computeScore = rockPaperScissorsGame.computeStrategicGuideScore(player1Shapes, player2Shapes);
+        int computeScore = rockPaperScissorsGame.computeStrategicGuideScore();
 
         assertEquals(15, computeScore);
     }
 
     @Test
     void player2_strategic_guide_should_throws_errors_when_list_size_are_different() {
-        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame();
-
         List<Shape> player1Shapes = Arrays.asList(Shape.ROCK, Shape.PAPER);
         List<Shape> player2Shapes = Arrays.asList(Shape.PAPER, Shape.ROCK, Shape.SCISSORS);
+        RockPaperScissorsGame rockPaperScissorsGame = new RockPaperScissorsGame(player1Shapes, player2Shapes);
 
         assertThrows(RuntimeException.class,
-                ()-> rockPaperScissorsGame.computeStrategicGuideScore(player1Shapes, player2Shapes));
+                rockPaperScissorsGame::computeStrategicGuideScore);
     }
 }
