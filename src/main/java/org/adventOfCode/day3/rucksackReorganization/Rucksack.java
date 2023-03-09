@@ -1,16 +1,17 @@
 package org.adventOfCode.day3.rucksackReorganization;
 
+import java.util.stream.Stream;
+
 public record Rucksack(String items) {
     private static final int INCREMENTTOUPPERCASE = 17;
     private static final int DECREMENTTOUPPER = 9;
     public char findItem() {
         String part1 = getFistCompartment();
         String part2 = getSecondCompartment();
-        for (int i = 0; i < part1.length(); i++) {
-           if(part2.indexOf(part1.charAt(i)) > -1)
-               return part1.charAt(i);
-        }
-        throw new RuntimeException("no Item found");
+
+        return Stream.of(part1.split("")).filter(item -> part2.indexOf(""+item) > -1).map(string -> string.charAt(0)).findFirst()
+                .orElseThrow(() -> new RuntimeException("no Item found"));
+
     }
 
     private String getSecondCompartment() {
