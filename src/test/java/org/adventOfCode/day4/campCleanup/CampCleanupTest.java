@@ -31,20 +31,19 @@ class CampCleanupTest {
         Section section2 = new Section(6,6);
         CampCleanup campCleanup = new CampCleanup();
 
-        boolean isPairsContainsEachOther = campCleanup.isSectionsContainsEachOther(section1, section2);
+        boolean contains = section1.contains(section2);
 
-        assertTrue(isPairsContainsEachOther);
+        assertTrue(contains);
     }
 
     @Test
     void section2_fully_contain_section3(){
         Section section1 = new Section(6,6);
         Section section2 = new Section(4,6);
-        CampCleanup campCleanup = new CampCleanup();
 
-        boolean isPairsContainsEachOther = campCleanup.isSectionsContainsEachOther(section1, section2);
+        boolean contains = section2.contains(section1);
 
-        assertTrue(isPairsContainsEachOther);
+        assertTrue(contains);
     }
 
     @Test
