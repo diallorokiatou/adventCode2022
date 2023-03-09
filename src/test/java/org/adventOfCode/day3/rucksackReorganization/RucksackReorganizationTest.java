@@ -12,21 +12,18 @@ class RucksackReorganizationTest {
 
     @Test
     void no_item(){
-        String rucksack = "vJrwwWtwJgWrhcsFMMfFFhFp";
+        Rucksack rucksack = new Rucksack("vJrwwWtwJgWrhcsFMMfFFhFp");
 
-        RucksackReorganization rucksackReorganization = new RucksackReorganization();
 
-        assertThrows(RuntimeException.class,
-                ()-> rucksackReorganization.findItem(rucksack));
+        assertThrows(RuntimeException.class, rucksack::findItem);
     }
 
     @Test
     void lower_case_item(){
-        String rucksack = "vJrwpWtwJgWrhcsFMMfFFhFp";
-        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+        Rucksack rucksack = new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp");
 
-        char item = rucksackReorganization.findItem(rucksack);
-        int priority = rucksackReorganization.findPriority(item);
+        char item = rucksack.findItem();
+        int priority = rucksack.findPriority(item);
 
         assertEquals('p' , item);
         assertEquals(16, priority);
@@ -34,11 +31,10 @@ class RucksackReorganizationTest {
 
     @Test
     void lower_case_item1(){
-        String rucksack = "CrZsJsPPZsGzwwsLwLmpwMDw";
-        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+        Rucksack rucksack = new Rucksack("CrZsJsPPZsGzwwsLwLmpwMDw");
 
-        char item = rucksackReorganization.findItem(rucksack);
-        int priority = rucksackReorganization.findPriority(item);
+        char item = rucksack.findItem();
+        int priority = rucksack.findPriority(item);
 
         assertEquals('s' , item);
         assertEquals(19, priority);
@@ -46,11 +42,10 @@ class RucksackReorganizationTest {
 
     @Test
     void upper_case_item(){
-        String rucksack = "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL";
-        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+        Rucksack rucksack = new Rucksack("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL");
 
-        char item = rucksackReorganization.findItem(rucksack);
-        int priority = rucksackReorganization.findPriority(item);
+        char item = rucksack.findItem();
+        int priority = rucksack.findPriority(item);
 
         assertEquals('L' , item);
         assertEquals(38, priority);
@@ -58,11 +53,10 @@ class RucksackReorganizationTest {
 
     @Test
     void upper_case_item1(){
-        String rucksack = "PmmdzqPrVvPwwTWBwg";
-        RucksackReorganization rucksackReorganization = new RucksackReorganization();
+        Rucksack rucksack = new Rucksack("PmmdzqPrVvPwwTWBwg");
 
-        char item = rucksackReorganization.findItem(rucksack);
-        int priority = rucksackReorganization.findPriority(item);
+        char item = rucksack.findItem();
+        int priority = rucksack.findPriority(item);
 
         assertEquals('P' , item);
         assertEquals(42, priority);
@@ -71,7 +65,7 @@ class RucksackReorganizationTest {
     @Test
     void sum_of_priority_of_list_of_one_rucksack(){
         RucksackReorganization rucksackReorganization = new RucksackReorganization();
-        List<String> rucksackList = List.of("vJrwpWtwJgWrhcsFMMfFFhFp");
+        List<Rucksack> rucksackList = List.of(new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp"));
 
         int sumOfPriority = rucksackReorganization.sumOfPriority(rucksackList);
 
@@ -81,7 +75,8 @@ class RucksackReorganizationTest {
     @Test
     void sum_of_priority_of_list_of_two_rucksack(){
         RucksackReorganization rucksackReorganization = new RucksackReorganization();
-        List<String> rucksackList = Arrays.asList("vJrwpWtwJgWrhcsFMMfFFhFp", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL");
+        List<Rucksack> rucksackList = Arrays.asList(new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp"),
+                                                    new Rucksack("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL"));
 
         int sumOfPriority = rucksackReorganization.sumOfPriority(rucksackList);
 
@@ -91,8 +86,12 @@ class RucksackReorganizationTest {
     @Test
     void sum_of_priority_of_list_of_rucksack(){
         RucksackReorganization rucksackReorganization = new RucksackReorganization();
-        List<String> rucksackList = Arrays.asList("vJrwpWtwJgWrhcsFMMfFFhFp", "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL", "PmmdzqPrVvPwwTWBwg",
-                "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn", "ttgJtRGJQctTZtZT", "CrZsJsPPZsGzwwsLwLmpwMDw");
+        List<Rucksack> rucksackList = Arrays.asList(new Rucksack("vJrwpWtwJgWrhcsFMMfFFhFp"),
+                                                    new Rucksack("jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL"),
+                                                    new Rucksack("PmmdzqPrVvPwwTWBwg"),
+                                                    new Rucksack("wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn"),
+                                                    new Rucksack("ttgJtRGJQctTZtZT"),
+                                                    new Rucksack("CrZsJsPPZsGzwwsLwLmpwMDw"));
 
         int sumOfPriority = rucksackReorganization.sumOfPriority(rucksackList);
 
