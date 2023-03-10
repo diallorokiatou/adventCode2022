@@ -38,17 +38,17 @@ class NoSpaceLeftOnDeviceTest {
         assertEquals("i (file, size=584)",directory);
     }
 
-  /*  @Test
+  @Test
     void convert_command_ls1(){
         String command = """
-                        ls 
+                        ls
                         dir xyz
                 """;
 
         String directory = convertToDirectory(command);
 
-        assertEquals(" xyz (dir)",directory);
-    }*/
+        assertEquals("xyz (dir)",directory);
+    }
 
     private String convertToDirectory(String command) {
         if(command.trim().startsWith("ls")){
@@ -58,7 +58,9 @@ class NoSpaceLeftOnDeviceTest {
                     .map(string -> string.split(" "))
                     .flatMap(Arrays::stream)
                     .toList();
-            return  fileInfos.get(1) + " (file, size=" + fileInfos.get(0) + ")";
+            if(fileInfos.get(0).equals("dir"))
+                return fileInfos.get(1) + " (" + fileInfos.get(0) + ")";
+            return fileInfos.get(1) + " (file, size=" + fileInfos.get(0) + ")";
         }
         String directory = command.split("cd")[1];
         return directory.trim() + " (dir)";
