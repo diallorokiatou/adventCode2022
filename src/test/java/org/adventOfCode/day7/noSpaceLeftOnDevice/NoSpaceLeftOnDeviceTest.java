@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -54,12 +53,11 @@ class NoSpaceLeftOnDeviceTest {
     private String convertToDirectory(String command) {
         if(command.trim().startsWith("ls")){
             List<String> fileInfos = Arrays.stream(command.trim().split("\n"))
-                    .filter(string -> string.length() >= 0)
                     .filter(string -> !string.startsWith("ls"))
-                    .map(string -> string.trim())
+                    .map(String::trim)
                     .map(string -> string.split(" "))
                     .flatMap(Arrays::stream)
-                    .collect(Collectors.toList());
+                    .toList();
             return  fileInfos.get(1) + " (file, size=" + fileInfos.get(0) + ")";
         }
         String directory = command.split("cd")[1];
